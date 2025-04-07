@@ -16,7 +16,7 @@
 
 Docker version > 20.0.0
 
-## Build an image
+## Create/build an image
 
 ### Usage:  docker build [OPTIONS] PATH | URL | -
 
