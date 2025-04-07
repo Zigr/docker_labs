@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 # [Postgres Docker.Hub images](https://hub.docker.com/_/postgres)
 ## Actually **alpine:3.21** is used for [**postgres:15-alpine**](https://github.com/docker-library/postgres/blob/cc254e85ed86e1f8c9052f9cbf0e3320324f0421/15/alpine3.21/Dockerfile)
 ### Synonym tags: 15.12-alpine3.21, 15-alpine3.21, 15.12-alpine, 15-alpine
@@ -10,7 +12,7 @@ ARG PGVECTOR_OPTFLAGS
 # Install necessary packages and pgvector extension
 RUN set -eux; \
     apk add --no-cache \
-    # postgresql15-dev \
+
     build-base \
     clang19 \
     llvm19-dev \ 
