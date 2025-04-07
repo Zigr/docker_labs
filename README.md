@@ -14,18 +14,26 @@
 
 ## Requrements:
 
-Docker version > 20.0.0
+Docker version >= **version 23.0**,  in which Docker **BuildKit** was introduced. To check this issue enter a terminal command:
+```shell
+docker buildx build --help
+```
+Probably, an older Docker version would be work. But this is not garanteed. See [Creating Issues](#creating-Issues)
 
-## Create/build an image
+## Create/build an image workflow by cloning this repo
 
-### Usage:  docker build [OPTIONS] PATH | URL | -
+### 1. Clone the repo
 
-### Argument Descripton:
+### 2. Build the image with Docker CLI
+
+#### Command:  docker build [OPTIONS] PATH | URL | -
+
+#### Argument Descripton:
 
 The last parameter **PATH | URL | -**  is called a  [Build Context](https://docs.docker.com/build/concepts/context/)
 In case of default repo clone, PATH is relative path, which points to current directory.
 
-### OPTIONS Description:
+#### OPTIONS Description:
 
  **OPTION**       | Description                                    
 -----------------|------------------------------------------------
@@ -37,13 +45,13 @@ In case of default repo clone, PATH is relative path, which points to current di
 #### Example:
 
 ```shell
-$ cd ./docker_alpine-pg-pgvector
-$ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cache] .
+cd ./docker_alpine-pg-pgvector
+docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cache] .
 ```
 ----
 ## Create and run a new container from an image
 
-### Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+### Command:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 ### Argument Descripton:
 
@@ -64,7 +72,11 @@ $ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-ca
 #### Example:
 
 ```shell
-$ docker run --name my_pg_pgvector -p 5432:5432 --mount type=volume,src=my_pg_data,dst=/var/lib/postgresql/data,volume-nocopy -e POSTGRES_DB=mydb -e POSTGRES_USER=root -e POSTGRES_PASSWORD=!ChangeMe! -e PGDATA=/var/lib/postgresql/data/pgdata zigr/pg15-pgvector08:alpine3.21
+docker run --name my_pg_pgvector -p 5432:5432 --mount type=volume,src=my_pg_data,dst=/var/lib/postgresql/data,volume-nocopy -e POSTGRES_DB=mydb -e POSTGRES_USER=root -e POSTGRES_PASSWORD=!ChangeMe! -e PGDATA=/var/lib/postgresql/data/pgdata zigr/pg15-pgvector08:alpine3.21
 ```
 
 ---
+
+## Creating Issues
+
+In case of image does not build or/and run create an [issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue) .
