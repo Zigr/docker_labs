@@ -79,12 +79,13 @@ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cach
 
 ## 😎 More quick way. Create/build an image from remote github repository
 
-#### Example 1: Check that image can be built, see warnings, if any, etc, In the remote [Build Context](https://docs.docker.com/build/concepts/context/)
+### Example 1: Check that image can be built, see warnings, if any, etc, In the remote [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
 docker build -t zigr/pg15-pgvector08:alpine3.21 -D --no-cache --check https://github.com/Zigr/docker_alpine-pg-pgvector.git#master
+```
 
-#### Example 2: Build image from local [Build Context](https://docs.docker.com/build/concepts/context/)
+### Example 2: Build image from remote [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
 docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cache] https://github.com/Zigr/docker_alpine-pg-pgvector.git#master:Dockerfile
