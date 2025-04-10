@@ -1,0 +1,9 @@
+# syntax=docker/dockerfile:1
+FROM alpine:3.21
+CMD ["/bin/sh"]
+EXPOSE 5433
+# # Install PostgreSQL client 
+RUN apk add --no-cache postgresql15-client
+
+ENTRYPOINT ["psql"]
+

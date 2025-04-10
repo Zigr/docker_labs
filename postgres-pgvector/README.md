@@ -41,12 +41,12 @@ Probably, an older Docker version would be work. But this is not garanteed. See 
 
 #### Command:  docker build [OPTIONS] PATH | URL | -
 
-#### Argument Descripton
+#### Argument Used
 
 The last parameter **PATH | URL | -**  is called a  [Build Context](https://docs.docker.com/build/concepts/context/)
 In case of default repo clone, PATH is relative path, which points to current directory.
 
-#### OPTIONS Description
+#### OPTIONS Used
 
 | **OPTION**     | Description                                     |
 |----------------|-------------------------------------------------|
@@ -100,13 +100,13 @@ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cach
 
 ### Command:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
-### Argument Descripton
+### Arguments Used
 
 |**ARGUMENT** | Description                       |
 |-------------|-----------------------------------|
 |**IMAGE**    | The only required command argument|
 
-### OPTIONS Description
+### OPTIONS Used
 
 |**OPTION**       | Description                                 |
 |-----------------|---------------------------------------------|
@@ -138,6 +138,8 @@ docker run [--rm] [--interactive] [--tty] [--detach] --name my_pg_pgvector -p 54
 </div>
 
 ---
+
+> :warning: **Warning:** Do not push the big red button. 
 
 ## Creating Issues
 

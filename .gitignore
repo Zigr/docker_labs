@@ -13,3 +13,6 @@ regression.*
 *.lib
 *.exp
 
+# Mac files
+.DS_Store
+
