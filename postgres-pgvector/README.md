@@ -143,7 +143,36 @@ docker run [--rm] [--interactive] [--tty] [--detach] --name my_pg_pgvector -p 54
 
 ---
 
-> :warning: **Warning:** Do not push the big red button. 
+## Running on the network example
+
+### 1. Build images
+
+```shell
+docker build -t mypostgres -f Dockerfile.postgres .
+docker build -t mypsql -f Dockerfile.psql .
+
+```
+
+### 2. Start the PostgreSQL server container:
+
+```shell
+
+docker network create mynetwork
+docker run -d --name postgres-server --network mynetwork -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase mypostgres
+
+```
+
+### 3. Start the client container and connect to the server:
+
+```shell
+
+docker run -it --rm --network mynetwork mypsql -h postgres-server -U myuser -d mydatabase
+
+```
+
+Now, the psql client should connect to the PostgreSQL server running in the other container.
+
+---
 
 ## Creating Issues
 
