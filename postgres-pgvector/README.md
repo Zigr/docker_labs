@@ -61,17 +61,18 @@ In case of default repo clone, PATH is relative path, which points to current di
 It's assumed you clone the repo in the directory by default
 
 ```shell
-cd ./docker_alpine-pg-pgvector
+cd ./docker_labs
 docker build -t zigr/pg15-pgvector08:alpine3.21 -D --no-cache --check .
 ```
 
 #### Example 2: Build image from local [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
-cd ./docker_alpine-pg-pgvector
+cd ./docker_labs
 docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cache] .
 ```
-**See** [⚠️ Notice below](#important-note)
+
+**See** [⚠️ Important Note](#important-note)
 
 ---
 
@@ -82,15 +83,18 @@ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cach
 ### Example 1: Check that image can be built, see warnings, if any, etc, In the remote [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
-docker build -t zigr/pg15-pgvector08:alpine3.21 -D --no-cache --check https://github.com/Zigr/docker_alpine-pg-pgvector.git#master
+docker docker  build -t zigr/pg15-pgvector08:alpine3.21 -D --no-cache -f Dockerfile.postgresql --check https://github.com/Zigr/docker_labs.git#master:/postgres-pgvector
+
 ```
 
 ### Example 2: Build image from remote [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
-docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cache] https://github.com/Zigr/docker_alpine-pg-pgvector.git#master:Dockerfile
+docker build -t zigr/pg15-pgvector08:alpine3.21 -f Dockerfile.postgresql [--build-arg=""] [-D] [--no-cache] https://github.com/Zigr/docker_labs.git#master:postgres-pgvector
+
 ```
-**See** [⚠️ Notice below](#important-note)
+
+**See** [⚠️ Important Note](#important-note)
 
 </div>
 
@@ -125,7 +129,7 @@ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cach
 docker run [--rm] [--interactive] [--tty] [--detach] --name my_pg_pgvector -p 5432:5432 --mount type=volume,src=my_pg_data,dst=/var/lib/postgresql/data,volume-nocopy -e POSTGRES_DB=mydb -e POSTGRES_USER=root -e POSTGRES_PASSWORD='!ChangeMe!' -e PGDATA=/var/lib/postgresql/data/pgdata zigr/pg15-pgvector08:alpine3.21
 ```
 
-**See** [⚠️ Notice below](#important-note)
+**See** [⚠️ Important Note](#important-note)
 
 ---
 <div class="warn" >
