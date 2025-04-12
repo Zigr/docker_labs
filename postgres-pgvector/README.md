@@ -33,7 +33,15 @@ Probably, an older Docker version would be work. But this is not garanteed. See 
 
 ---
 
-## Create/build an image locally  using cloning this repo workflow
+## Install from Docker Hub
+
+```shell
+
+docker pull  zigr/pg15-pgvector08:alpine3.21
+
+```
+
+## Create/build an image locally  by cloning this repo
 
 ### 1. Clone the repo
 
@@ -62,14 +70,14 @@ It's assumed you clone the repo in the directory by default
 
 ```shell
 cd ./docker_labs
-docker build -t zigr/pg15-pgvector08:alpine3.21 -D --no-cache --check .
+docker build -t  mypostgres-pgvector -D --no-cache --check .
 ```
 
 #### Example 2: Build image from local [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
 cd ./docker_labs
-docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cache] .
+docker build -t  mypostgres-pgvector [--build-arg=""] [-D] [--no-cache] .
 ```
 
 **See** [⚠️ Important Note](#important-note)
@@ -78,19 +86,19 @@ docker build -t zigr/pg15-pgvector08:alpine3.21 [--build-arg=""] [-D] [--no-cach
 
 <div class="success">
 
-## 😎 More quick way. Create/build an image from remote github repository
+## 😎 Create/build an image using github repository
 
 ### Example 1: Check that image can be built, see warnings, if any, etc, In the remote [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
-docker docker  build -t zigr/pg15-pgvector08:alpine3.21 -D --no-cache -f Dockerfile.postgresql --check https://github.com/Zigr/docker_labs.git#master:/postgres-pgvector
+docker docker  build -t  mypostgres-pgvector -D --no-cache -f Dockerfile.postgresql --check https://github.com/Zigr/docker_labs.git#master:/postgres-pgvector
 
 ```
 
 ### Example 2: Build image from remote [Build Context](https://docs.docker.com/build/concepts/context/)
 
 ```shell
-docker build -t zigr/pg15-pgvector08:alpine3.21 -f Dockerfile.postgresql [--build-arg=""] [-D] [--no-cache] https://github.com/Zigr/docker_labs.git#master:postgres-pgvector
+docker build -t  mypostgres-pgvector -f Dockerfile.postgresql [--build-arg=""] [-D] [--no-cache] https://github.com/Zigr/docker_labs.git#master:postgres-pgvector
 
 ```
 
@@ -143,12 +151,12 @@ docker run [--rm] [--interactive] [--tty] [--detach] --name my_pg_pgvector -p 54
 
 ---
 
-## Running on the network example
+## Running on the local network example
 
 ### 1. Build images
 
 ```shell
-docker build -t mypostgres -f Dockerfile.postgres .
+docker build -t mypostgres-pgvector -f Dockerfile.postgres .
 docker build -t mypsql -f Dockerfile.psql .
 
 ```
@@ -158,11 +166,11 @@ docker build -t mypsql -f Dockerfile.psql .
 ```shell
 
 docker network create mynetwork
-docker run -d --name postgres-server --network mynetwork -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase mypostgres
+docker run -d --name postgres-server --network mynetwork -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase mypostgres-pgvector
 
 ```
 
-### 3. Start the client container and connect to the server:
+### 3. Start the client container and connect to the server
 
 ```shell
 
