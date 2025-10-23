@@ -157,7 +157,7 @@ docker run [--rm] [--interactive] [--tty] [--detach] --name my_pg_pgvector -p 54
 
 ```shell
 docker build -t mypostgres-pgvector -f Dockerfile.postgres .
-docker build -t mypsql -f Dockerfile.psql .
+docker build -t mypsql -f Dockerfile.client .
 
 ```
 
