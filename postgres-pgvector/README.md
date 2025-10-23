@@ -184,4 +184,9 @@ Now, the psql client should connect to the PostgreSQL server running in the othe
 
 ## Creating Issues
 
-In case of image does not build or/and run, then  <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" >create an issue</a>.
+In case of image does not build or/and run, then  <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" >create an issue</a>
+
+## Links
+
+- [pgvector](https://github.com/pgvector/pgvector/tree/master)
+
